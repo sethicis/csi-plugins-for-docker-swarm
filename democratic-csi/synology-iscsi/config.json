@@ -1,19 +1,19 @@
 {
-    "description": "democratic-csi storage driver",
+    "description": "democratic-csi storage driver for synology iscsi",
     "interface": {
       "types": ["docker.csinode/1.0", "docker.csicontroller/1.0"],
-      "socket": "csi-local-path.sock"
+      "socket": "csi-synology-iscsi.sock"
     },
     "network": {
       "type": "host"
     },
     "mounts": [
       {
-        "name": "csi-local-hostpath",
-        "description": "Local Host Path",
+        "name": "csi-synology-iscsi",
+        "description": "synology iscsi path",
         "type": "bind",
-        "source": "/var/lib/csi-local-hostpath",
-        "destination": "/var/lib/csi-local-hostpath",
+        "source": "/var/lib/csi-synology-iscsi",
+        "destination": "/var/lib/csi-synology-iscsi",
         "options": ["bind"],
         "settable": ["source"]
       }
@@ -21,7 +21,7 @@
     "env": [
       {
         "name": "CSI_ENDPOINT",
-        "value": "/run/docker/plugins/csi-local-path.sock"
+        "value": "/run/docker/plugins/csi-synology-iscsi.sock"
       }
     ],
     "entrypoint": [
